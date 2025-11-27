@@ -1,0 +1,25 @@
+{
+  "name": "modern-portfolio-website",
+  "version": "1.0.0",
+  "description": "A beautiful, modern portfolio website with responsive design and smooth animations",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "preview": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "website",
+    "responsive",
+    "modern",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Wadii Boutou",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}
+

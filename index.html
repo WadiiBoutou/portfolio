@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUTOU Wadii | développeur full stack</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">WB</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link" data-en="Home" data-fr="Accueil">Home</a></li>
+                <li><a href="#about" class="nav-link" data-en="About" data-fr="À propos">About</a></li>
+                <li><a href="#skills" class="nav-link" data-en="Skills" data-fr="Compétences">Skills</a></li>
+                <li><a href="#certificates" class="nav-link" data-en="Certificates" data-fr="Certificats">Certificates</a></li>
+                <li><a href="#projects" class="nav-link" data-en="Projects" data-fr="Projets">Projects</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-fr="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">
+                    <span class="lang-text">FR</span>
+                </button>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1V3M12 21V23M23 12H21M3 12H1M20.485 20.485L19.071 19.071M4.929 4.929L3.515 3.515M20.485 3.515L19.071 4.929M4.929 19.071L3.515 20.485" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-particles"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-in">
+                        <span data-en="Hi, I'm" data-fr="Bonjour, je suis">Hi, I'm</span> <span class="gradient-text">Wadii</span>
+                    </h1>
+                    <h2 class="fade-in-delay-1" data-en="Full Stack Developer (Final-year MIAGE)" data-fr="développeur full stack (MIAGE, dernière année)">Full Stack Developer (Final-year MIAGE)</h2>
+                    <p class="fade-in-delay-2" data-en="Final-year engineering student at EMSI Marrakech (MIAGE). Seeking a 4–6 month PFE internship starting Feb 2, 2026 (Casablanca/Rabat)." data-fr="Étudiant ingénieur en dernière année à l'EMSI Marrakech (MIAGE). À la recherche d'un stage PFE de 4 à 6 mois à partir du 2 février 2026 (Casablanca/Rabat).">
+                        Final-year engineering student at EMSI Marrakech (MIAGE). Seeking a 4–6 month PFE internship starting Feb 2, 2026 (Casablanca/Rabat).
+                    </p>
+                    <div class="hero-buttons fade-in-delay-3">
+                        <a href="#projects" class="btn btn-primary" data-en="View My Work" data-fr="Voir Mon Travail">View My Work</a>
+                        <a href="#contact" class="btn btn-secondary" data-en="Get In Touch" data-fr="Me Contacter">Get In Touch</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="images/image_light.jpg" alt="Profile Picture" class="profile-pic profile-pic-light" draggable="false">
+                    <img src="images/image_dark.jpg" alt="Profile Picture" class="profile-pic profile-pic-dark" draggable="false">
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title" data-en="About Me" data-fr="À Propos de Moi">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro" data-en="I'm BOUTOU Wadii, a future Full Stack developer based in Marrakech, Morocco. Currently in my 3rd (final) year of an engineering cycle in Computer Science and Networks (MIAGE) at EMSI." data-fr="Je suis BOUTOU Wadii, futur développeur full stack basé à Marrakech, Maroc. Actuellement en 3ème (dernière) année d'un cycle d'ingénieur en Informatique et Réseaux (MIAGE) à l'EMSI.">
+                        I'm BOUTOU Wadii, a future Full Stack developer based in Marrakech, Morocco. Currently in my 3rd (final) year of an engineering cycle in Computer Science and Networks (MIAGE) at EMSI.
+                    </p>
+                    <p data-en="I build reliable web applications and data-processing tools. I enjoy solving problems, learning continuously, and adapting quickly to new technologies." data-fr="Je conçois des applications Web fiables et des outils de traitement de données. J'aime résoudre des problèmes, apprendre en continu et m'adapter rapidement aux nouvelles technologies.">
+                        I build reliable web applications and data-processing tools. I enjoy solving problems, learning continuously, and adapting quickly to new technologies.
+                    </p>                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="6">0</h3>
+                            <p class="stat-label" data-en="Projects Completed" data-fr="Projets Réalisés">Projects Completed</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="2">0</h3>
+                            <p class="stat-label" data-en="Professional Internships" data-fr="Stages Professionnels">Professional Internships</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3 class="stat-number" data-target="3">0</h3>
+                            <p class="stat-label" data-en="Certifications" data-fr="Certifications">Certifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title" data-en="Skills & Expertise" data-fr="Compétences et Expertise">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <!-- Technical Skills -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Technical Skills" data-fr="Compétences Techniques">Technical Skills</h3>
+                    <p data-en="Modern technologies and frameworks for building robust, scalable applications with clean architecture." data-fr="Technologies et frameworks modernes pour créer des applications robustes et évolutives avec une architecture propre.">Modern technologies and frameworks for building robust, scalable applications with clean architecture.</p>
+                    <div class="skill-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">ASP.NET</span>
+                        <span class="tag">Spring Boot</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Oracle</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Jenkins</span>
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Odoo</span>
+                    </div>
+                </div>
+
+                <!-- Testing & QA -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Testing & Quality Assurance" data-fr="Tests et Assurance Qualité">Testing & Quality Assurance</h3>
+                    <p data-en="Comprehensive testing strategies combining manual and automated approaches with Agile methodologies." data-fr="Stratégies de test complètes combinant approches manuelles et automatisées avec méthodologies Agile.">Comprehensive testing strategies combining manual and automated approaches with Agile methodologies.</p>
+                    <div class="skill-tags">
+                        <span class="tag">JUnit</span>
+                        <span class="tag">Mockito</span>
+                        <span class="tag">Jest</span>
+                        <span class="tag">SonarQube</span>
+                        <span class="tag">Postman</span>
+                        <span class="tag">Selenium</span>
+                        <span class="tag">JIRA</span>
+                        <span class="tag">Scrum / Agile</span>
+                    </div>
+                </div>
+
+                <!-- Creative & Design -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 2V8M12 16V22M22 12H16M8 12H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Creative & Design Skills" data-fr="Compétences Créatives et Design">Creative & Design Skills</h3>
+                    <p data-en="User-centered design approach creating intuitive, aesthetically pleasing interfaces with modern UX principles." data-fr="Approche de conception centrée sur l'utilisateur créant des interfaces intuitives et esthétiques avec des principes UX modernes.">User-centered design approach creating intuitive, aesthetically pleasing interfaces with modern UX principles.</p>
+                    <div class="skill-tags">
+                        <span class="tag" data-en="Aesthetic Design" data-fr="Design Esthétique">Aesthetic Design</span>
+                        <span class="tag" data-en="UI/UX Design" data-fr="Design UI/UX">UI/UX Design</span>
+                        <span class="tag" data-en="Creativity" data-fr="Créativité">Creativity</span>
+                        <span class="tag" data-en="Visual Composition" data-fr="Composition Visuelle">Visual Composition</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <h2 class="section-title" data-en="Certificates & Awards" data-fr="Certificats et Prix">Certificates & Awards</h2>
+            <div class="certificates-grid">
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Oracle Database Administration I (In progress)" data-fr="Administration de base de données Oracle I (en cours)">Administration de base de données Oracle I (en cours)</h3>
+                    <p class="certificate-issuer" data-en="Issued by: Oracle" data-fr="Délivré par : Oracle">Issued by: Oracle</p>
+                    <p class="certificate-date">2025</p>
+                </div>
+
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Intro to Object-Oriented Programming with Java" data-fr="Introduction à la programmation orientée objet avec Java">Introduction à la programmation orientée objet avec Java</h3>
+                    <p class="certificate-issuer" data-en="Issued by: Coursera" data-fr="Délivré par : Coursera">Issued by: Coursera</p>
+                    <p class="certificate-date">2024</p>
+                </div>
+
+                <div class="certificate-card">
+                    <div class="certificate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 15C15.866 15 19 11.866 19 8C19 4.13401 15.866 1 12 1C8.13401 1 5 4.13401 5 8C5 11.866 8.13401 15 12 15Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8.21 13.89L7 23L12 20L17 23L15.79 13.88" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 data-en="Intro to Containers with Docker, Kubernetes & OpenShift" data-fr="Introduction aux conteneurs avec Docker, Kubernetes et OpenShift">Introduction aux conteneurs avec Docker, Kubernetes et OpenShift</h3>
+                    <p class="certificate-issuer" data-en="Issued by: Coursera" data-fr="Délivré par : Coursera">Issued by: Coursera</p>
+                    <p class="certificate-date">2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title" data-en="Professional Experience & Projects" data-fr="Expérience Professionnelle & Projets">Professional Experience & Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1: QuizMaster AI -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-slideshow">
+                            <div class="slideshow-slide active" style="background-image: url('images/quizapp/quizz1.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/quizapp/quizz2.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/quizapp/quizz3.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/quizapp/quizz4.png');"></div>
+                        </div>
+                        <div class="project-overlay" data-project="quizapp">
+                            <div class="project-link-content">
+                                <span class="project-link-text" data-en="View Gallery" data-fr="Voir la Galerie">View Gallery</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="QuizMaster AI — Smart Quiz Platform" data-fr="QuizMaster AI — plateforme de quiz intelligente">QuizMaster AI — plateforme de quiz intelligente</h3>
+                        <p data-en="QuizMaster AI uses Google Gemini to generate quiz questions by topic and level, tracks learner performance, and delivers analytics to improve learning outcomes." data-fr="QuizMaster AI utilise Google Gemini pour créer automatiquement des questions par sujet et niveau, suit les performances des apprenants et fournit des analytics détaillés pour améliorer l’apprentissage.">QuizMaster AI utilise Google Gemini pour créer automatiquement des questions par sujet et niveau, suit les performances des apprenants et fournit des analytics détaillés pour améliorer l’apprentissage.</p>
+                        <div class="project-tags">
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Google Gemini</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Tenmar Petit Bateau Internship -->
+                <div class="project-card" data-project="tenmar">
+                    <div class="project-image">
+                        <div class="project-slideshow">
+                            <div class="slideshow-slide active" style="background-image: url('images/tenmar/tenmar1.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/tenmar/tenmar2.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/tenmar/tenmar3.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/tenmar/tenmar4.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/tenmar/tenmar5.png');"></div>
+                        </div>
+                        <div class="project-overlay" data-project="tenmar">
+                            <div class="project-link-content">
+                                <span class="project-link-date" data-en="Apr 2024 - May 2024" data-fr="Avr 2024 - Mai 2024">Apr 2024 - May 2024</span>
+                                <span class="project-link-text" data-en="View Gallery" data-fr="Voir la Galerie">View Gallery</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="Tenmar Petit Bateau — Full-Stack Intern" data-fr="Tenmar Petit Bateau — Stagiaire Full Stack">Tenmar Petit Bateau — Stagiaire Full Stack</h3>
+                        <p data-en="Built an internal tool to optimize workload planning and tracking across the factory's end-to-end production process. Collaborated on requirements, delivered responsive UI and efficient task allocation." data-fr="Développement d’un outil interne optimisant la planification et le suivi des charges de travail sur l’ensemble du processus de production. Analyse des besoins, UI réactive et répartition efficace des tâches.">Développement d’un outil interne optimisant la planification et le suivi des charges de travail sur l’ensemble du processus de production. Analyse des besoins, UI réactive et répartition efficace des tâches.</p>
+                        <div class="project-tags">
+                            <span class="tag">ASP.NET</span>
+                            <span class="tag">Angular</span>
+                            <span class="tag">SQL Server</span>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: AMSOFT Evoleo Internship -->
+                <div class="project-card" data-project="evoleo">
+                    <div class="project-image">
+                        <div class="project-slideshow">
+                            <div class="slideshow-slide active" style="background-image: url('images/evoleo/evol1.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/evoleo/evol2.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/evoleo/evol3.png');"></div>
+                            <div class="slideshow-slide" style="background-image: url('images/evoleo/evol4.png');"></div>
+                        </div>
+                        <div class="project-overlay" data-project="evoleo">
+                            <div class="project-link-content">
+                                <span class="project-link-date" data-en="Jul - Aug 2025" data-fr="Juil - Août 2025">Jul - Aug 2025</span>
+                                <span class="project-link-text" data-en="View Gallery" data-fr="Voir la Galerie">View Gallery</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 data-en="AMSOFT Evoleo — Full-Stack Intern" data-fr="AMSOFT Evoleo — Stagiaire Full Stack">AMSOFT Evoleo — Stagiaire Full Stack</h3>
+                        <p data-en="Designed and built a web app to automate invoice data extraction (PDF/images): vendor, taxes, amounts. Integrated PaddleOCR for text recognition and YOLO for detection; built an admin UI for upload/processing with validation and structured mapping." data-fr="Conception et développement d'une application Web automatisant l'extraction des données de factures (PDF/images) : fournisseur, taxes, montants. Intégration de PaddleOCR pour la reconnaissance de texte et YOLO pour la détection ; interface d'administration pour le traitement, validation et mappage structuré.">Conception et développement d'une application Web automatisant l'extraction des données de factures (PDF/images) : fournisseur, taxes, montants. Intégration de PaddleOCR pour la reconnaissance de texte et YOLO pour la détection ; interface d'administration pour le traitement, validation et mappage structuré.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">PaddleOCR</span>
+                            <span class="tag">YOLO</span>
+                            <span class="tag">React</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title" data-en="Get In Touch" data-fr="Prenons Contact">Get In Touch</h2>
+            <p class="section-subtitle" data-en="Looking for a PFE internship from Feb 2, 2026 (4–6 months)." data-fr="À la recherche d'un stage PFE à partir du 2 février 2026 (4–6 mois).">Looking for a PFE internship from Feb 2, 2026 (4–6 months).</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 8L10.89 13.26C11.54 13.67 12.46 13.67 13.11 13.26L21 8M5 19H19C20.1 19 21 18.1 21 17V7C21 5.9 20.1 5 19 5H5C3.9 5 3 5.9 3 7V17C3 18.1 3.9 19 5 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>boutouwadii@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 data-en="Location" data-fr="Localisation">Location</h3>
+                            <p data-en="Marrakech (Mobility: Casa/Rabat)" data-fr="Marrakech (Mobilité : Casablanca / Rabat)">Marrakech (Mobility: Casa/Rabat)</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/WadiiBoutou" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/wadii-boutou" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/xgvjkgqn" method="POST">
+                    <input type="hidden" name="_subject" value="New contact from portfolio website">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" data-en="Your Name" data-fr="Votre Nom" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="_replyto" data-en="Your Email" data-fr="Votre Email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" data-en="Your Message" data-fr="Votre Message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-en="Send Message" data-fr="Envoyer le Message">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 BOUTOU Wadii. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="image-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <button class="modal-nav modal-nav-prev" aria-label="Previous image">&#8249;</button>
+            <button class="modal-nav modal-nav-next" aria-label="Next image">&#8250;</button>
+            <div class="modal-image-container">
+                <img id="modal-image" src="" alt="Project screenshot">
+            </div>
+            <div class="modal-indicators"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
