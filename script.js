@@ -535,6 +535,30 @@ const langText = document.querySelector('.lang-text');
 // Check for saved language preference or default to English
 let currentLang = localStorage.getItem('language') || 'en';
 
+const cvDownloadButton = document.getElementById('cv-download-btn');
+const cvDownloadPaths = {
+    en: 'CV/CV%20english%20wadii%20boutou.pdf',
+    fr: 'CV/CV%20francais%20wadii%20boutou.pdf'
+};
+const cvDownloadFilenames = {
+    en: 'CV english wadii boutou.pdf',
+    fr: 'CV francais wadii boutou.pdf'
+};
+const cvButtonLabels = {
+    en: 'Download CV',
+    fr: 'Télécharger CV'
+};
+
+const updateCvDownloadLink = () => {
+    if (!cvDownloadButton) return;
+    const langKey = currentLang === 'fr' ? 'fr' : 'en';
+    cvDownloadButton.href = cvDownloadPaths[langKey];
+    cvDownloadButton.setAttribute('download', cvDownloadFilenames[langKey]);
+    const titleText = cvDownloadButton.dataset[langKey === 'fr' ? 'frTitle' : 'enTitle'] || cvButtonLabels[langKey];
+    cvDownloadButton.title = titleText;
+    cvDownloadButton.setAttribute('aria-label', cvButtonLabels[langKey]);
+};
+
 // Function to update all text content
 const updateLanguage = (lang) => {
     const elements = document.querySelectorAll('[data-en]');
@@ -557,10 +581,12 @@ const updateLanguage = (lang) => {
 
 // Set initial language
 updateLanguage(currentLang);
+updateCvDownloadLink();
 
 langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'fr' : 'en';
     updateLanguage(currentLang);
+    updateCvDownloadLink();
     localStorage.setItem('language', currentLang);
     
     // Optional: Add a brief animation

@@ -177,6 +177,34 @@ h1, h2, h3, h4, h5, h6 {
     margin-left: 1rem;
 }
 
+.nav-cv-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--bg-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.nav-cv-btn svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+}
+
+.nav-cv-btn:hover {
+    background: var(--bg-secondary);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+body.dark-theme .nav-cv-btn svg {
+    color: #ffffff;
+}
+
 /* ===== Language Toggle Button ===== */
 .lang-toggle {
     width: 45px;
@@ -381,6 +409,18 @@ body.dark-theme .moon-icon {
 .btn-secondary:hover {
     background: var(--primary-color);
     color: white;
+    transform: translateY(-2px);
+}
+
+.btn-tertiary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px dashed var(--primary-color);
+}
+
+.btn-tertiary:hover {
+    background: var(--primary-color);
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
@@ -1329,6 +1369,16 @@ body.dark-theme .btn-secondary {
 body.dark-theme .btn-secondary:hover {
     background: var(--primary-color);
     color: #ffffff;
+}
+
+body.dark-theme .btn-tertiary {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+body.dark-theme .btn-tertiary:hover {
+    background: var(--accent-color);
+    color: #000000;
 }
 
 /* Social link hover contrast */
