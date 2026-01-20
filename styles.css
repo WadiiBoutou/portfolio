@@ -1479,6 +1479,46 @@ body.dark-theme .social-link:hover {
     }
 }
 
+@media (max-width: 600px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+        padding: 0 1rem;
+    }
+
+    .hero-text h1,
+    .hero-text h2,
+    .hero-text p {
+        text-align: center;
+    }
+
+    .hero-image {
+        width: min(90vw, 280px);
+        height: min(90vw, 280px);
+        margin: 0 auto;
+    }
+
+    .hero-image .profile-pic {
+        position: static;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+    }
+
+    .hero-image .profile-pic-dark {
+        display: none;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
 @media (max-width: 480px) {
     .container {
         padding: 0 1rem;
