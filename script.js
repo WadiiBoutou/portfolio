@@ -601,6 +601,11 @@ initContactForm();
 
 // ===== Image Modal =====
 const projectImages = {
+    agrotrace: [
+        'images/agrotrace/dashboard.png',
+        'images/agrotrace/visionmap.png',
+        'images/agrotrace/recomndation.png'
+    ],
     quizapp: [
         'images/quizapp/quizz1.png',
         'images/quizapp/quizz2.png',
@@ -671,6 +676,7 @@ function setupProjectModal(projectName) {
 }
 
 // Setup modals for featured projects
+setupProjectModal('agrotrace');
 setupProjectModal('quizapp');
 setupProjectModal('evoleo');
 setupProjectModal('tenmar');
