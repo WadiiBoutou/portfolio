@@ -626,6 +626,32 @@ const projectImages = {
         'images/tenmar/tenmar3.png',
         'images/tenmar/tenmar4.png',
         'images/tenmar/tenmar5.png'
+    ],
+    yap: [
+        'images/yap/0.jpeg',
+        'images/yap/1.jpeg',
+        'images/yap/2.jpeg',
+        'images/yap/3.jpeg',
+        'images/yap/4.jpeg',
+        'images/yap/5.jpeg',
+        'images/yap/6.jpeg',
+        'images/yap/7.jpeg',
+        'images/yap/8.jpeg',
+        'images/yap/9.jpeg',
+        'images/yap/10.jpeg',
+        'images/yap/11.jpeg',
+        'images/yap/12.jpeg',
+        'images/yap/13.jpeg',
+        'images/yap/14.jpeg'
+    ],
+    reza: [
+        'images/reza/1.png',
+        'images/reza/3.png',
+        'images/reza/4.png',
+        'images/reza/5.png',
+        'images/reza/6.png',
+        'images/reza/7.png',
+        'images/reza/8.png'
     ]
 };
 
@@ -680,6 +706,8 @@ setupProjectModal('agrotrace');
 setupProjectModal('quizapp');
 setupProjectModal('evoleo');
 setupProjectModal('tenmar');
+setupProjectModal('yap');
+setupProjectModal('reza');
 
 function openModal(projectName, index) {
     currentImages = projectImages[projectName] || [];

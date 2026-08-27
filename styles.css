@@ -957,8 +957,8 @@ section {
 
 .projects-grid {
     display: grid;
-    /* Force 4 columns on large screens */
-    grid-template-columns: repeat(4, 1fr);
+    /* Force 3 columns on large screens */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
 }
@@ -1014,6 +1014,12 @@ section {
 
 .slideshow-slide.active {
     opacity: 1;
+}
+
+/* Mobile photo slideshows: use contain so portrait images aren't cropped */
+.project-card[data-mobile-slides] .slideshow-slide {
+    background-size: contain;
+    background-color: #1a1a1a;
 }
 
 .project-overlay {
@@ -1214,6 +1220,7 @@ section {
     justify-content: center;
     overflow: hidden;
     border-radius: 0.5rem;
+    background: #1a1a1a;
 }
 
 #modal-image {
