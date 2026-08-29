@@ -706,9 +706,12 @@ function setupProjectModal(projectName) {
             openModal(projectName, 0);
         });
         
-        const linkContent = overlay.querySelector('.project-link-content');
-        if (linkContent) {
-            linkContent.style.pointerEvents = 'none';
+        const liveLink = overlay.querySelector('.project-link-live');
+        if (liveLink) {
+            liveLink.style.pointerEvents = 'auto';
+            liveLink.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
         }
     }
 }
