@@ -652,6 +652,17 @@ const projectImages = {
         'images/reza/6.png',
         'images/reza/7.png',
         'images/reza/8.png'
+    ],
+    cosytrend: [
+        'images/cosy/Screenshot_1.png',
+        'images/cosy/Screenshot_2.png',
+        'images/cosy/Screenshot_3.png',
+        'images/cosy/Screenshot_4.png'
+    ],
+    nabeny: [
+        'images/nabeny/Screenshot_1.png',
+        'images/nabeny/Screenshot_2.png',
+        'images/nabeny/Screenshot_3.png'
     ]
 };
 
@@ -689,6 +700,7 @@ function setupProjectModal(projectName) {
     if (overlay) {
         overlay.style.cursor = 'pointer';
         overlay.addEventListener('click', (e) => {
+            if (e.target.closest('.project-link-live')) return;
             e.stopPropagation();
             e.preventDefault();
             openModal(projectName, 0);
@@ -708,6 +720,8 @@ setupProjectModal('evoleo');
 setupProjectModal('tenmar');
 setupProjectModal('yap');
 setupProjectModal('reza');
+setupProjectModal('cosytrend');
+setupProjectModal('nabeny');
 
 function openModal(projectName, index) {
     currentImages = projectImages[projectName] || [];
