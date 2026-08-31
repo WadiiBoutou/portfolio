@@ -559,6 +559,15 @@ const updateCvDownloadLink = () => {
     cvDownloadButton.setAttribute('aria-label', cvButtonLabels[langKey]);
 };
 
+// ===== CV Download Tracking (GA4) =====
+if (cvDownloadButton) {
+    cvDownloadButton.addEventListener('click', () => {
+        gtag('event', 'cv_download', {
+            language: currentLang
+        });
+    });
+}
+
 // Function to update all text content
 const updateLanguage = (lang) => {
     const elements = document.querySelectorAll('[data-en]');
@@ -668,6 +677,7 @@ const projectImages = {
 
 let currentImages = [];
 let currentImageIndex = 0;
+let currentProjectName = '';
 const modal = document.getElementById('image-modal');
 const modalImage = document.getElementById('modal-image');
 const modalClose = document.querySelector('.modal-close');
@@ -729,6 +739,10 @@ setupProjectModal('nabeny');
 function openModal(projectName, index) {
     currentImages = projectImages[projectName] || [];
     currentImageIndex = index;
+    currentProjectName = projectName;
+    gtag('event', 'gallery_open', {
+        project_name: projectName
+    });
     createIndicators(currentImages.length);
     updateModalImage();
     updateIndicators();
@@ -763,6 +777,11 @@ function showNextImage() {
         currentImageIndex = (currentImageIndex + 1) % currentImages.length;
         updateModalImage();
         updateIndicators();
+        gtag('event', 'gallery_slide', {
+            project_name: currentProjectName,
+            direction: 'next',
+            slide_index: currentImageIndex
+        });
     }
 }
 
@@ -771,6 +790,11 @@ function showPrevImage() {
         currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
         updateModalImage();
         updateIndicators();
+        gtag('event', 'gallery_slide', {
+            project_name: currentProjectName,
+            direction: 'prev',
+            slide_index: currentImageIndex
+        });
     }
 }
 
