@@ -559,15 +559,6 @@ const updateCvDownloadLink = () => {
     cvDownloadButton.setAttribute('aria-label', cvButtonLabels[langKey]);
 };
 
-// ===== CV Download Tracking (GA4) =====
-if (cvDownloadButton) {
-    cvDownloadButton.addEventListener('click', () => {
-        gtag('event', 'cv_download', {
-            language: currentLang
-        });
-    });
-}
-
 // Function to update all text content
 const updateLanguage = (lang) => {
     const elements = document.querySelectorAll('[data-en]');
