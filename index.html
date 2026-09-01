@@ -99,10 +99,20 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="images/image_light.jpg" alt="Profile Picture" class="profile-pic profile-pic-light"
-                        draggable="false">
-                    <img src="images/image_dark.jpg" alt="Profile Picture" class="profile-pic profile-pic-dark"
-                        draggable="false">
+                    <picture>
+                        <source media="(max-width: 480px)" srcset="images/image_light-sm.webp">
+                        <source media="(max-width: 768px)" srcset="images/image_light-md.webp">
+                        <source srcset="images/image_light.webp">
+                        <img src="images/image_light.jpg" alt="Profile Picture" class="profile-pic profile-pic-light"
+                            draggable="false" loading="eager">
+                    </picture>
+                    <picture>
+                        <source media="(max-width: 480px)" srcset="images/image_dark-sm.webp">
+                        <source media="(max-width: 768px)" srcset="images/image_dark-md.webp">
+                        <source srcset="images/image_dark.webp">
+                        <img src="images/image_dark.jpg" alt="Profile Picture" class="profile-pic profile-pic-dark"
+                            draggable="false" loading="eager">
+                    </picture>
                 </div>
             </div>
         </div>

@@ -256,7 +256,11 @@ function showNotification(message, type = 'success') {
 }
 
 // ===== Parallax Effect for Hero Section =====
+// Disable on mobile to prevent avatar merging with buttons
 window.addEventListener('scroll', () => {
+    // Skip parallax on mobile devices
+    if (window.innerWidth <= 768) return;
+    
     const scrolled = window.pageYOffset;
     const heroText = document.querySelector('.hero-text');
     const heroImage = document.querySelector('.hero-image');

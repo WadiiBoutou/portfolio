@@ -1724,12 +1724,17 @@ body.dark-theme .social-link:hover {
         border-radius: 1rem;
     }
 
-    .hero-image .profile-pic-dark {
-        display: none;
-    }
+    /* Dark image uses same opacity/visibility approach on mobile */
 
     .hero-buttons {
         justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Disable parallax on mobile to prevent avatar merging with buttons */
+    .hero-text, .hero-image {
+        transform: none !important;
     }
 }
 
