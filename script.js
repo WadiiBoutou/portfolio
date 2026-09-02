@@ -86,10 +86,10 @@ const animateCounter = (element) => {
     const updateCounter = () => {
         current += increment;
         if (current < target) {
-            element.textContent = Math.ceil(current) + '+';
+            element.textContent = Math.ceil(current);
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target + '+';
+            element.textContent = target;
         }
     };
 
@@ -113,6 +113,17 @@ const statsObserver = new IntersectionObserver((entries) => {
 const aboutSection = document.querySelector('.about');
 if (aboutSection) {
     statsObserver.observe(aboutSection);
+    // Fallback: trigger immediately if already in view
+    const rect = aboutSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const statNumbers = aboutSection.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            if (!stat.classList.contains('animated')) {
+                stat.classList.add('animated');
+                animateCounter(stat);
+            }
+        });
+    }
 }
 
 // ===== Intersection Observer for Fade-in Animations =====
@@ -730,6 +741,16 @@ setupProjectModal('yap');
 setupProjectModal('reza');
 setupProjectModal('cosytrend');
 setupProjectModal('nabeny');
+
+function toggleDesc(btn) {
+    var wrapper = btn.parentElement;
+    wrapper.classList.toggle('expanded');
+    var isExpanded = wrapper.classList.contains('expanded');
+    var lang = currentLang === 'fr' ? 'fr' : 'en';
+    btn.textContent = isExpanded
+        ? (lang === 'fr' ? 'Voir moins' : 'Show less')
+        : btn.getAttribute('data-' + lang);
+}
 
 function openModal(projectName, index) {
     currentImages = projectImages[projectName] || [];

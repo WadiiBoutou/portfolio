@@ -1232,6 +1232,42 @@ body.dark-theme .deployed-indicator {
     line-height: 1.6;
 }
 
+/* Collapsible description on mobile */
+.project-desc-wrapper {
+    position: relative;
+}
+
+.project-desc-wrapper .project-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.project-desc-wrapper.expanded .project-desc {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.project-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-toggle:hover {
+    text-decoration: underline;
+}
+
 .project-tags {
     display: flex;
     flex-wrap: wrap;
@@ -1614,6 +1650,12 @@ body.dark-theme .social-link:hover {
         justify-content: center;
     }
 
+    .hero-image {
+        width: 350px;
+        height: 350px;
+        margin: 0 auto;
+    }
+
     .profile-pic {
         width: 350px;
         height: 350px;
@@ -1685,11 +1727,48 @@ body.dark-theme .social-link:hover {
     }
 
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .project-image {
+        height: 200px;
     }
 
     .project-content h3 {
         font-size: 1.05rem;
+    }
+
+    .hero-image {
+        justify-self: center;
+        margin: 0 auto;
+        width: min(85vw, 320px);
+        height: min(85vw, 320px);
+    }
+
+    .hero-image picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-image .profile-pic {
+        position: static;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 1rem;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    /* Disable parallax on mobile */
+    .hero-text, .hero-image {
+        transform: none !important;
     }
 }
 
@@ -1697,6 +1776,7 @@ body.dark-theme .social-link:hover {
     .hero-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        justify-items: center;
     }
 
     .hero-text {
@@ -1711,9 +1791,17 @@ body.dark-theme .social-link:hover {
     }
 
     .hero-image {
-        width: min(90vw, 280px);
-        height: min(90vw, 280px);
-        margin: 0 auto;
+        justify-self: center;
+        width: min(90vw, 300px);
+        height: min(90vw, 300px);
+    }
+
+    .hero-image picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
 
     .hero-image .profile-pic {
@@ -1724,19 +1812,12 @@ body.dark-theme .social-link:hover {
         border-radius: 1rem;
     }
 
-    /* Dark image uses same opacity/visibility approach on mobile */
-
     .hero-buttons {
         justify-content: center;
     }
 }
 
-@media (max-width: 768px) {
-    /* Disable parallax on mobile to prevent avatar merging with buttons */
-    .hero-text, .hero-image {
-        transform: none !important;
-    }
-}
+
 
 @media (max-width: 480px) {
     .container {
@@ -1765,10 +1846,17 @@ body.dark-theme .social-link:hover {
         grid-template-columns: 1fr;
     }
 
-    /* Ensure 2 columns remain even on small screens as requested */
     .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .project-image {
+        height: 180px;
+    }
+
+    .project-content {
+        padding: 1rem;
     }
 
     .project-content h3 {
@@ -1782,6 +1870,14 @@ body.dark-theme .social-link:hover {
     .project-link-btn {
         padding: 0.3rem 0.65rem;
         font-size: 0.75rem;
+    }
+
+    .deployed-indicator {
+        font-size: 0.7rem;
+    }
+
+    .project-toggle {
+        display: inline-block;
     }
 }
 
