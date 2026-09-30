@@ -547,17 +547,18 @@ themeToggle.addEventListener('click', () => {
 const langToggle = document.getElementById('lang-toggle');
 const langText = document.querySelector('.lang-text');
 
-// Check for saved language preference or default to English
-let currentLang = localStorage.getItem('language') || 'en';
+// Language always starts in English
+let currentLang = 'en';
+localStorage.removeItem('language');
 
 const cvDownloadButton = document.getElementById('cv-download-btn');
 const cvDownloadPaths = {
-    en: 'CV/CV%20english%20wadii%20boutou.pdf',
-    fr: 'CV/CV%20francais%20wadii%20boutou.pdf'
+    en: 'CV/CV_BOUTOU_WADII_EN.pdf',
+    fr: 'CV/CV_BOUTOU_WADII_FR.pdf'
 };
 const cvDownloadFilenames = {
-    en: 'CV english wadii boutou.pdf',
-    fr: 'CV francais wadii boutou.pdf'
+    en: 'CV_BOUTOU_WADII_EN.pdf',
+    fr: 'CV_BOUTOU_WADII_FR.pdf'
 };
 const cvButtonLabels = {
     en: 'Download CV',
@@ -592,6 +593,11 @@ const updateLanguage = (lang) => {
     
     // Update button text
     langText.textContent = lang === 'en' ? 'FR' : 'EN';
+
+    document.documentElement.lang = lang;
+    document.title = lang === 'en'
+        ? 'BOUTOU Wadii | Full Stack Developer'
+        : 'BOUTOU Wadii | Développeur Full Stack';
 };
 
 // Set initial language
@@ -602,7 +608,6 @@ langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'fr' : 'en';
     updateLanguage(currentLang);
     updateCvDownloadLink();
-    localStorage.setItem('language', currentLang);
     
     // Optional: Add a brief animation
     langToggle.style.transform = 'scale(1.2)';

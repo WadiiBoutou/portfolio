@@ -7,7 +7,7 @@ A beautiful, responsive portfolio website with modern UI/UX design, smooth anima
 - **Modern Design**: Clean and aesthetically pleasing interface with professional blue/yellow color scheme (consistent across light and dark modes)
 - **3D Rotating Badge**: Continuously rotating badge showing profile picture and custom badge with mouse drag control
 - **Dark Theme Toggle**: Switch between light and dark modes with saved preference
-- **Bilingual Support**: Toggle between English and French with persistent language preference
+- **Bilingual Support**: Toggle between English and French (English is the default on every visit)
 - **Fully Responsive**: Optimized for all devices (desktop, tablet, mobile)
 - **Smooth Animations**: Engaging scroll animations and transitions
 - **Interactive Elements**: Hover effects, parallax scrolling, and custom cursor
