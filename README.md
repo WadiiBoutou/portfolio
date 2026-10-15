@@ -4,9 +4,9 @@ A beautiful, responsive portfolio website with modern UI/UX design, smooth anima
 
 ## Features
 
-- **Modern Design**: Clean and aesthetically pleasing interface with professional blue/yellow color scheme (consistent across light and dark modes)
+- **Modern Design**: Responsive portfolio with warm colors, labeled technology logos, and balanced project cards
 - **3D Rotating Badge**: Continuously rotating badge showing profile picture and custom badge with mouse drag control
-- **Dark Theme Toggle**: Switch between light and dark modes with saved preference
+- **Dark Theme Toggle**: Magic UI Animated Theme Toggler with a saved preference and reduced-motion support
 - **Bilingual Support**: Toggle between English and French (English is the default on every visit)
 - **Fully Responsive**: Optimized for all devices (desktop, tablet, mobile)
 - **Smooth Animations**: Engaging scroll animations and transitions
@@ -20,158 +20,44 @@ A beautiful, responsive portfolio website with modern UI/UX design, smooth anima
 1. **Hero Section**: Eye-catching introduction with rotating badge
 2. **About**: Personal information with animated statistics
 3. **Skills**: Showcase your expertise with beautiful cards
-4. **Certificates**: Display your certifications and awards
-5. **Projects**: Display your portfolio projects
+4. **Projects**: Display your portfolio projects
+5. **Certificates**: Display your certifications and awards
 6. **Contact**: Get in touch form with social links
 
 ## Technologies Used
 
-- HTML5
-- CSS3 (with CSS Variables and Grid/Flexbox)
-- Vanilla JavaScript (ES6+)
+- React and Vite
+- HTML5 and CSS3 (with CSS Variables and Grid/Flexbox)
+- JavaScript (ES modules)
+- [Magic UI Animated Theme Toggler](https://magicui.design/docs/components/animated-theme-toggler)
 - Google Fonts (Inter & Poppins)
 
 ## Getting Started
 
 ### Installation
 
-1. Clone or download this repository
-2. Open `index.html` in your browser
+1. Install Node.js 20.19+ or 22.12+.
+2. Install dependencies with `npm install`.
+3. Start the local development server with `npm run dev`.
+4. Open the URL printed by Vite (normally `http://localhost:5173`).
 
-That's it! No build process or dependencies required.
+Create a production build with `npm run build`; preview it locally with `npm run preview`.
+
+The portfolio content is maintained in `portfolio-source.html` and rendered
+inside the React/Vite shell. The theme control is the Magic UI component in
+`src/ui/animated-theme-toggler.jsx`.
 
 ### Customization
 
-#### Update Your Information
+The page content (including project cards, skill tags, links, and translations)
+is in `portfolio-source.html`. Keep public assets under `public/` so Vite serves
+them from the site root; for example, project images belong in `public/images/`
+and CV files in `public/CV/`.
 
-1. **Personal Details**: Edit the text in `index.html`
-   - Name, title, and description in the hero section
-   - About section content
-   - Contact information
+Update colors, responsive layouts, and animations in `styles.css`. The Magic UI
+theme toggle is implemented in `src/ui/animated-theme-toggler.jsx`, while the
+React/Vite entry point is `src/main.jsx`. Existing site interactions remain in
+`script.js`.
 
-2. **Profile Images**: 
-   - Replace `pic.jpeg` with your profile photo (front of card)
-   - Replace `image.png` with your badge/logo (back of card)
-   - Recommended size: 500x500px
-   - Square format works best for both images
-
-3. **Projects**: Update the project cards with your actual projects
-   - Add project images (create a `/images` folder)
-   - Update project descriptions and technologies
-   - Add links to live demos or repositories
-
-4. **Skills**: Customize the skills section
-   - Update skill categories
-   - Modify the skill tags
-   - Change icons (currently using inline SVG)
-
-5. **Colors**: The website uses a professional blue/yellow color scheme
-   
-   **Light Mode:**
-   - Primary: `#2563eb` (Blue)
-   - Secondary: `#facc15` (Soft Yellow)
-   - Background: Soft white → lavender-gray gradient (hero section only)
-   
-   **Dark Mode:**
-   - Primary: `#2563eb` (Blue - same as light)
-   - Secondary: `#facc15` (Yellow - same as light)
-   - Background: Pure black `#000000`
-
-6. **Social Links**: Update your social media links in the contact section
-
-7. **Certificates**: Update the certificates section with your actual achievements
-
-8. **Language**: Add more translations by updating the `data-en` and `data-fr` attributes
-
-#### Interactive Features
-
-- **Rotating Badge**: Click and drag to manually rotate, auto-rotates when released
-- **Dark Mode**: Click the sun/moon icon in the navigation to toggle themes
-- **Language Toggle**: Click "EN/FR" button to switch between English and French
-- **Custom Cursor**: Enabled on desktop (can be disabled by removing the `createCursor()` call)
-- **Typing Effect**: Uncomment line in `script.js` to enable typing animation
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-## File Structure
-
-```
-portfolio/
-│
-├── index.html          # Main HTML file
-├── styles.css          # All styles and animations
-├── script.js           # Interactive functionality
-├── pic.jpeg           # Profile picture
-└── README.md          # This file
-```
-
-## Performance Tips
-
-1. **Optimize Images**: Compress your profile picture and project images
-2. **Lazy Loading**: For project images, consider adding lazy loading
-3. **Minimize HTTP Requests**: Keep resources consolidated
-
-## Deployment
-
-You can deploy this website to:
-
-- **GitHub Pages**: Free and easy
-- **Netlify**: Drag and drop deployment
-- **Vercel**: Simple hosting solution
-- Any static hosting service
-
-### GitHub Pages Deployment
-
-1. Create a new repository on GitHub
-2. Push your code to the repository
-3. Go to Settings > Pages
-4. Select your main branch as the source
-5. Your site will be live at `https://yourusername.github.io/repository-name`
-
-## Customization Guide
-
-### Adding New Projects
-
-```html
-<div class="project-card">
-    <div class="project-image">
-        <div class="project-overlay">
-            <a href="#" class="project-link">View Project</a>
-        </div>
-    </div>
-    <div class="project-content">
-        <h3>Project Name</h3>
-        <p>Project description goes here.</p>
-        <div class="project-tags">
-            <span class="tag">Tech 1</span>
-            <span class="tag">Tech 2</span>
-        </div>
-    </div>
-</div>
-```
-
-### Modifying Statistics
-
-Update the `data-target` attribute in the About section:
-
-```html
-<h3 class="stat-number" data-target="50">0</h3>
-```
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Contact
-
-Feel free to reach out if you have any questions or suggestions!
-
----
-
-**Made with ❤️ and modern web technologies**
-
+Use `npm run dev -- --port 3000` to preview on port 3000, `npm run build` to
+create a production build, and `npm run preview` to serve that build locally.

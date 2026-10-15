@@ -2,11 +2,12 @@
   "name": "modern-portfolio-website",
   "version": "1.0.0",
   "description": "A beautiful, modern portfolio website with responsive design and smooth animations",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "start": "npx serve .",
-    "dev": "npx live-server .",
-    "preview": "npx serve ."
+    "start": "vite --host 0.0.0.0",
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
   },
   "keywords": [
     "portfolio",
@@ -19,7 +20,14 @@
   ],
   "author": "Wadii Boutou",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "html-react-parser": "^6.1.8",
+    "lucide-react": "^1.57.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.4"
+  }
 }
-

@@ -127,29 +127,30 @@ if (aboutSection) {
 }
 
 // ===== Intersection Observer for Fade-in Animations =====
-const fadeElements = document.querySelectorAll('.skill-card, .project-card, .contact-item');
+const fadeElements = document.querySelectorAll('.section-title, .skill-card, .project-card, .contact-item');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-            setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
-            fadeObserver.unobserve(entry.target);
-        }
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const siblings = Array.from(entry.target.parentElement.children);
+                const siblingIndex = siblings.indexOf(entry.target);
+                entry.target.style.setProperty('--reveal-delay', `${(siblingIndex % 4) * 70}ms`);
+                entry.target.classList.add('is-visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px'
     });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px'
-});
 
-fadeElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    fadeObserver.observe(element);
-});
+    fadeElements.forEach(element => {
+        element.classList.add('reveal-on-scroll');
+        fadeObserver.observe(element);
+    });
+}
 
 // ===== Contact Form Handling =====
 const initContactForm = () => {
@@ -516,30 +517,6 @@ const createTypingEffect = () => {
 // Uncomment the line below to enable typing effect
 // createTypingEffect();
 
-// ===== Dark Theme Toggle =====
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Check for saved theme preference or default to dark mode
-const currentTheme = localStorage.getItem('theme') || 'dark';
-if (currentTheme === 'dark') {
-    body.classList.add('dark-theme');
-}
-
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-theme');
-    
-    // Save preference
-    const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-    localStorage.setItem('theme', theme);
-    
-    // Optional: Add a brief animation to toggle button
-    themeToggle.style.transform = 'rotate(360deg)';
-    setTimeout(() => {
-        themeToggle.style.transform = 'rotate(0deg)';
-    }, 300);
-});
-
 // Images are now theme-based only, not language-dependent
 // Removed updateBadgeImages function as images are controlled by CSS based on theme
 
@@ -551,7 +528,7 @@ const langText = document.querySelector('.lang-text');
 let currentLang = 'en';
 localStorage.removeItem('language');
 
-const cvDownloadButton = document.getElementById('cv-download-btn');
+const cvDownloadButtons = document.querySelectorAll('.cv-download-link');
 const cvDownloadPaths = {
     en: 'CV/CV_BOUTOU_WADII_EN.pdf',
     fr: 'CV/CV_BOUTOU_WADII_FR.pdf'
@@ -562,17 +539,18 @@ const cvDownloadFilenames = {
 };
 const cvButtonLabels = {
     en: 'Download CV',
-    fr: 'Télécharger CV'
+    fr: 'Télécharger le CV'
 };
 
 const updateCvDownloadLink = () => {
-    if (!cvDownloadButton) return;
     const langKey = currentLang === 'fr' ? 'fr' : 'en';
-    cvDownloadButton.href = cvDownloadPaths[langKey];
-    cvDownloadButton.setAttribute('download', cvDownloadFilenames[langKey]);
-    const titleText = cvDownloadButton.dataset[langKey === 'fr' ? 'frTitle' : 'enTitle'] || cvButtonLabels[langKey];
-    cvDownloadButton.title = titleText;
-    cvDownloadButton.setAttribute('aria-label', cvButtonLabels[langKey]);
+    cvDownloadButtons.forEach(button => {
+        button.href = cvDownloadPaths[langKey];
+        button.setAttribute('download', cvDownloadFilenames[langKey]);
+        const titleText = button.dataset[langKey === 'fr' ? 'frTitle' : 'enTitle'] || cvButtonLabels[langKey];
+        button.title = titleText;
+        button.setAttribute('aria-label', cvButtonLabels[langKey]);
+    });
 };
 
 // Function to update all text content
@@ -757,6 +735,10 @@ function toggleDesc(btn) {
         : btn.getAttribute('data-' + lang);
 }
 
+document.querySelectorAll('.project-toggle').forEach(button => {
+    button.addEventListener('click', () => toggleDesc(button));
+});
+
 function openModal(projectName, index) {
     currentImages = projectImages[projectName] || [];
     currentImageIndex = index;
@@ -896,4 +878,3 @@ projectCards.forEach(card => {
         slides[currentSlide].classList.add('active');
     });
 });
-

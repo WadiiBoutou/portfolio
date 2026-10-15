@@ -33,6 +33,21 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@supports (view-transition-name: root) {
+    ::view-transition-old(root) {
+        animation: none;
+    }
+
+    html[data-magicui-theme-vt="active"]::view-transition-new(root) {
+        clip-path: var(--magicui-theme-vt-clip-from);
+        animation: none;
+    }
+
+    ::view-transition-group(root) {
+        animation-duration: var(--magicui-theme-toggle-vt-duration, 400ms);
+    }
+}
+
 /* ===== Dark Theme ===== */
 body.dark-theme {
     --primary-color: #6b4f3b;
@@ -405,9 +420,54 @@ body.dark-theme .moon-icon {
 
 .hero-buttons {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.hero-buttons .btn {
+    flex: 0 0 auto;
+    padding-inline: 0.75rem;
+    white-space: nowrap;
+}
+
+.hero-buttons .btn-tertiary {
+    display: inline-flex;
     align-items: center;
+    gap: 0.55rem;
+}
+
+.hero-buttons .btn-tertiary svg {
+    width: 18px;
+    height: 18px;
+}
+
+.hero-social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.hero-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.hero-social-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.hero-social-link svg {
+    width: 18px;
+    height: 18px;
 }
 
 .btn {
@@ -533,7 +593,7 @@ body.dark-theme .moon-icon {
     }
 
     .flip-card-inner:hover {
-        animation: continuousRotate 6s linear infinite;
+        animation: none;
     }
 }
 
@@ -815,7 +875,7 @@ section {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     margin-top: 3rem;
 }
@@ -868,6 +928,52 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+}
+
+.tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.tech-tag i {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.tech-tag .brand-icon {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: 0 0 auto;
+}
+
+.gemini-icon {
+    fill: #8e75b2;
+}
+
+body.dark-theme .tigerdata-icon {
+    filter: invert(1);
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 550ms ease var(--reveal-delay, 0ms),
+        transform 550ms cubic-bezier(0.2, 0.65, 0.3, 1) var(--reveal-delay, 0ms);
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll,
+    .reveal-on-scroll.is-visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
 }
 
 .tag {
@@ -932,9 +1038,20 @@ section {
 }
 
 .certificate-issuer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
+}
+
+.coursera-mark {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex: 0 0 auto;
+    color: #0056d2;
 }
 
 .certificate-date {
@@ -957,7 +1074,7 @@ section {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
     margin-top: 3rem;
 }
@@ -969,6 +1086,14 @@ section {
     box-shadow: var(--shadow-md);
     transition: var(--transition);
     border: 1px solid var(--border-color);
+}
+
+.projects .section-subtitle {
+    margin-bottom: 0;
+}
+
+.projects .projects-grid {
+    margin-top: 2rem;
 }
 
 .project-card:hover {
@@ -1628,7 +1753,7 @@ body.dark-theme .social-link:hover {
 
 @media (max-width: 1100px) {
     .projects-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
@@ -1647,6 +1772,10 @@ body.dark-theme .social-link:hover {
     }
 
     .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-social-links {
         justify-content: center;
     }
 
@@ -1833,8 +1962,13 @@ body.dark-theme .social-link:hover {
     }
 
     .btn {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .hero-buttons {
+        flex-wrap: wrap;
+        gap: 0.65rem;
     }
 
     .flip-card {
