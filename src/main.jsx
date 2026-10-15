@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import parse from 'html-react-parser';
 import portfolioSource from '../portfolio-source.html?raw';
+import interactionScriptUrl from '../script.js?url';
 import AnimatedThemeToggler from './ui/animated-theme-toggler.jsx';
 
 const bodyMarkup = portfolioSource
@@ -15,7 +16,7 @@ const bodyMarkup = portfolioSource
 function App() {
     useEffect(() => {
         const script = document.createElement('script');
-        script.src = '/script.js';
+        script.src = interactionScriptUrl;
         script.dataset.portfolioInteractions = 'true';
         document.body.append(script);
         return () => script.remove();
