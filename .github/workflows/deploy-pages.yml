@@ -22,10 +22,15 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set GitHub Pages source to Actions
+      - name: Verify GitHub Pages source
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow
+        run: |
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq '.build_type')"
+          if [ "$build_type" != "workflow" ]; then
+            echo "::error::Set GitHub Pages > Build and deployment > Source to GitHub Actions, then rerun this workflow."
+            exit 1
+          fi
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
