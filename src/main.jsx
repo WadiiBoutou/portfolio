@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import parse from 'html-react-parser';
 import portfolioSource from '../portfolio-source.html?raw';
 import interactionScriptUrl from '../script.js?url';
-import AnimatedThemeToggler from './ui/animated-theme-toggler.jsx';
+import { AnimatedThemeToggler } from './ui/animated-theme-toggler.jsx';
 
 const bodyMarkup = portfolioSource
     .replace(/\r\n?/g, '\n')
@@ -12,6 +12,25 @@ const bodyMarkup = portfolioSource
     .replace(/<script\b[^>]*\/?>/gi, '')
     .replace(/\s+src=(["'])\1/gi, '')
     .replace(/\sonclick=(["']).*?\1/gi, '') ?? '';
+
+function ThemeControl() {
+    const [theme, setTheme] = useState(() => document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+
+    const handleThemeChange = useCallback(nextTheme => {
+        const isDark = nextTheme === 'dark';
+        document.body.classList.toggle('dark-theme', isDark);
+        localStorage.setItem('theme', nextTheme);
+        setTheme(nextTheme);
+    }, []);
+
+    return (
+        <AnimatedThemeToggler
+            className="theme-toggle"
+            theme={theme}
+            onThemeChange={handleThemeChange}
+        />
+    );
+}
 
 function App() {
     useEffect(() => {
@@ -25,7 +44,7 @@ function App() {
     return parse(bodyMarkup, {
         replace(node) {
             if (node.type === 'tag' && node.name === 'div' && node.attribs.id === 'theme-toggle-root') {
-                return <AnimatedThemeToggler />;
+                return <ThemeControl />;
             }
         }
     });

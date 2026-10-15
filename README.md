@@ -44,8 +44,8 @@ A beautiful, responsive portfolio website with modern UI/UX design, smooth anima
 Create a production build with `npm run build`; preview it locally with `npm run preview`.
 
 The portfolio content is maintained in `portfolio-source.html` and rendered
-inside the React/Vite shell. The theme control is the Magic UI component in
-`src/ui/animated-theme-toggler.jsx`.
+inside the React/Vite shell. The Magic UI Animated Theme Toggler component is
+copied into `src/ui/animated-theme-toggler.jsx`.
 
 ### Customization
 
@@ -55,7 +55,7 @@ them from the site root; for example, project images belong in `public/images/`
 and CV files in `public/CV/`.
 
 Update colors, responsive layouts, and animations in `styles.css`. The Magic UI
-theme toggle is implemented in `src/ui/animated-theme-toggler.jsx`, while the
+theme toggle is in `src/ui/animated-theme-toggler.jsx`, while the
 React/Vite entry point is `src/main.jsx`. Existing site interactions remain in
 `script.js`.
 

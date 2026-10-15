@@ -1,34 +1,71 @@
-import { useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { flushSync } from 'react-dom';
 import { Moon, Sun } from 'lucide-react';
 
-const getCircleClipPaths = (x, y, radius, viewportWidth, viewportHeight) => {
+// Copyable component adapted from Magic UI's Animated Theme Toggler.
+function getCircleClipPaths(x, y, radius, viewportWidth, viewportHeight) {
     const toX = value => `${(value / viewportWidth) * 100}%`;
     const toY = value => `${(value / viewportHeight) * 100}%`;
-    const center = `${toX(x)} ${toY(y)}`;
+    const point = `${toX(x)} ${toY(y)}`;
     const radiusPercent = (radius / (Math.hypot(viewportWidth, viewportHeight) / Math.SQRT2)) * 100;
 
     return [
-        `circle(0% at ${center})`,
-        `circle(${radiusPercent}% at ${center})`
+        `circle(0% at ${point})`,
+        `circle(${radiusPercent}% at ${point})`
     ];
-};
+}
 
-// Circle-reveal variant adapted from Magic UI's Animated Theme Toggler.
-function AnimatedThemeToggler({ className = '', duration = 400, ...props }) {
-    const [isDark, setIsDark] = useState(() => document.body.classList.contains('dark-theme'));
+export function AnimatedThemeToggler({
+    className,
+    duration = 400,
+    fromCenter = false,
+    theme,
+    onThemeChange,
+    ...props
+}) {
     const buttonRef = useRef(null);
     const isTransitioning = useRef(false);
     const activeAnimation = useRef(null);
+    const isDark = theme === 'dark';
 
-    const toggleTheme = () => {
-        if (isTransitioning.current) return;
+    const cancelAnimation = useCallback(() => {
+        activeAnimation.current?.cancel();
+        activeAnimation.current = null;
+    }, []);
+
+    useEffect(() => () => {
+        cancelAnimation();
+        const root = document.documentElement;
+        if (root.dataset.magicuiThemeVt !== 'active') return;
+        delete root.dataset.magicuiThemeVt;
+        root.style.removeProperty('--magicui-theme-toggle-vt-duration');
+        root.style.removeProperty('--magicui-theme-vt-clip-from');
+    }, [cancelAnimation]);
+
+    const toggleTheme = useCallback(() => {
+        const button = buttonRef.current;
+        if (
+            !button ||
+            isTransitioning.current ||
+            document.documentElement.dataset.magicuiThemeVt === 'active'
+        ) {
+            return;
+        }
+
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const bounds = button.getBoundingClientRect();
+        const x = fromCenter ? viewportWidth / 2 : bounds.left + bounds.width / 2;
+        const y = fromCenter ? viewportHeight / 2 : bounds.top + bounds.height / 2;
+        const radius = Math.hypot(
+            Math.max(x, viewportWidth - x),
+            Math.max(y, viewportHeight - y)
+        );
 
         const applyTheme = () => {
-            const nextIsDark = !document.body.classList.contains('dark-theme');
-            document.body.classList.toggle('dark-theme', nextIsDark);
-            localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
-            setIsDark(nextIsDark);
+            const nextTheme = isDark ? 'light' : 'dark';
+            document.documentElement.classList.toggle('dark');
+            onThemeChange(nextTheme);
         };
 
         if (
@@ -39,18 +76,8 @@ function AnimatedThemeToggler({ className = '', duration = 400, ...props }) {
             return;
         }
 
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        const bounds = buttonRef.current.getBoundingClientRect();
-        const x = bounds.left + bounds.width / 2;
-        const y = bounds.top + bounds.height / 2;
-        const radius = Math.hypot(
-            Math.max(x, viewportWidth - x),
-            Math.max(y, viewportHeight - y)
-        );
         const clipPaths = getCircleClipPaths(x, y, radius, viewportWidth, viewportHeight);
         const root = document.documentElement;
-
         root.dataset.magicuiThemeVt = 'active';
         root.style.setProperty('--magicui-theme-toggle-vt-duration', `${duration}ms`);
         root.style.setProperty('--magicui-theme-vt-clip-from', clipPaths[0]);
@@ -61,11 +88,12 @@ function AnimatedThemeToggler({ className = '', duration = 400, ...props }) {
             delete root.dataset.magicuiThemeVt;
             root.style.removeProperty('--magicui-theme-toggle-vt-duration');
             root.style.removeProperty('--magicui-theme-vt-clip-from');
-            activeAnimation.current?.cancel();
-            activeAnimation.current = null;
+            cancelAnimation();
         };
 
-        const transition = document.startViewTransition(() => flushSync(applyTheme));
+        const transition = document.startViewTransition(() => {
+            flushSync(applyTheme);
+        });
         transition.finished.then(cleanup, cleanup);
         transition.ready.then(() => {
             activeAnimation.current = root.animate(
@@ -78,21 +106,19 @@ function AnimatedThemeToggler({ className = '', duration = 400, ...props }) {
                 }
             );
         }, cleanup);
-    };
+    }, [cancelAnimation, duration, fromCenter, isDark, onThemeChange]);
 
     return (
         <button
-            ref={buttonRef}
             type="button"
-            className={`theme-toggle ${className}`.trim()}
+            ref={buttonRef}
+            onClick={toggleTheme}
+            className={className}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             aria-pressed={isDark}
-            onClick={toggleTheme}
             {...props}
         >
             {isDark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
         </button>
     );
 }
-
-export default AnimatedThemeToggler;
